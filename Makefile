@@ -8,10 +8,10 @@ dropdb:
 	docker exec -it postgres-author dropdb author
 
 migrateup:
-	migrate -database "postgres://root:password@localhost:5432/author?sslmode=disable" -path internal/migrations -verbose up
+	migrate -database "postgres://root:password@localhost:5432/author?sslmode=disable" -path db/internal/migrations -verbose up
 
 migratedown:
-	migrate -database "postgres://root:password@localhost:5432/author?sslmode=disable" -path internal/migrations -verbose down
+	migrate -database "postgres://root:password@localhost:5432/author?sslmode=disable" -path db/internal/migrations -verbose down
 
 sqlc:
 	sqlc generate
