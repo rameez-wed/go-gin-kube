@@ -8,7 +8,7 @@ CREATE TABLE "posts" (
   "title" varchar NOT NULL,
   "description" varchar NOT NULL,
   "created_at" timestamptz DEFAULT NOW(),
-  "author_id" int
+  "author_id" bigint NOT NULL
 );
 
 CREATE INDEX ON "posts" ("title");

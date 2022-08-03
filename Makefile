@@ -13,6 +13,10 @@ migrateup:
 migratedown:
 	migrate -database "postgres://root:password@localhost:5432/author?sslmode=disable" -path internal/migrations -verbose down
 
+sqlc:
+	sqlc generate
 
+test:
+	go test -v -cover ./...
 
-.PHONY: postgres createdb
+.PHONY: postgres createdb dropdb migrateup migratedown sqlc
