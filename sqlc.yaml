@@ -1,0 +1,7 @@
+version: 1
+packages:
+  - path: './db/sqlc/generated/'
+    name: 'db'
+    engine: 'postgresql'
+    schema: './db/internal/migrations/'
+    queries: './db/sqlc/query/'
