@@ -1,7 +1,12 @@
 version: 1
 packages:
-  - path: './db/sqlc/generated/'
+  - path: './db/sqlc/'
     name: 'db'
     engine: 'postgresql'
     schema: './db/internal/migrations/'
-    queries: './db/sqlc/query/'
+    queries: './db/query/'
+    emit_json_tags: true
+    emit_interface: true
+    emit_empty_slices: true
+
+
