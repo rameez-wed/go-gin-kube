@@ -21,9 +21,9 @@ RETURNING id, title, description, created_at, author_id
 `
 
 type CreatePostParams struct {
-	Title       string
-	Description string
-	AuthorID    int64
+	Title       string `json:"title"`
+	Description string `json:"description"`
+	AuthorID    int64  `json:"author_id"`
 }
 
 func (q *Queries) CreatePost(ctx context.Context, arg CreatePostParams) (Post, error) {
@@ -57,9 +57,9 @@ OFFSET $3
 `
 
 type GetAllPostsForAuthorParams struct {
-	AuthorID int64
-	Limit    int32
-	Offset   int32
+	AuthorID int64 `json:"author_id"`
+	Limit    int32 `json:"limit"`
+	Offset   int32 `json:"offset"`
 }
 
 func (q *Queries) GetAllPostsForAuthor(ctx context.Context, arg GetAllPostsForAuthorParams) ([]Post, error) {
@@ -68,7 +68,7 @@ func (q *Queries) GetAllPostsForAuthor(ctx context.Context, arg GetAllPostsForAu
 		return nil, err
 	}
 	defer rows.Close()
-	var items []Post
+	items := []Post{}
 	for rows.Next() {
 		var i Post
 		if err := rows.Scan(
@@ -117,8 +117,8 @@ OFFSET $2
 `
 
 type ListPostsParams struct {
-	Limit  int32
-	Offset int32
+	Limit  int32 `json:"limit"`
+	Offset int32 `json:"offset"`
 }
 
 func (q *Queries) ListPosts(ctx context.Context, arg ListPostsParams) ([]Post, error) {
@@ -127,7 +127,7 @@ func (q *Queries) ListPosts(ctx context.Context, arg ListPostsParams) ([]Post, e
 		return nil, err
 	}
 	defer rows.Close()
-	var items []Post
+	items := []Post{}
 	for rows.Next() {
 		var i Post
 		if err := rows.Scan(
@@ -159,9 +159,9 @@ RETURNING id, title, description, created_at, author_id
 `
 
 type UpdatePostParams struct {
-	ID          int64
-	Title       string
-	Description string
+	ID          int64  `json:"id"`
+	Title       string `json:"title"`
+	Description string `json:"description"`
 }
 
 func (q *Queries) UpdatePost(ctx context.Context, arg UpdatePostParams) (Post, error) {

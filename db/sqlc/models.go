@@ -9,14 +9,14 @@ import (
 )
 
 type Author struct {
-	ID   int64
-	Name string
+	ID   int64  `json:"id"`
+	Name string `json:"name"`
 }
 
 type Post struct {
-	ID          int64
-	Title       string
-	Description string
-	CreatedAt   sql.NullTime
-	AuthorID    int64
+	ID          int64        `json:"id"`
+	Title       string       `json:"title"`
+	Description string       `json:"description"`
+	CreatedAt   sql.NullTime `json:"created_at"`
+	AuthorID    int64        `json:"author_id"`
 }
