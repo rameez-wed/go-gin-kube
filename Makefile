@@ -1,5 +1,5 @@
 postgres:
-	docker run --name postgres-author -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=password -d postgres:14.4-alpine
+	docker run --name postgres-author --network author-network -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=password -d postgres:14.4-alpine
 
 createdb:
 	docker exec -it postgres-author createdb --username=root --owner=root author
