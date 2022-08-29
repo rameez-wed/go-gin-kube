@@ -17,6 +17,7 @@ func NewServer(dbStore db.Store) *Server {
 	router.GET("/authors/:id", server.getAuthor)
 	router.GET("/authors", server.getAuthors)
 	router.POST("/authors", server.createAuthor)
+	router.GET("/", server.defaultRoute)
 	server.router = router
 	return server
 }

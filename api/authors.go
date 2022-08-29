@@ -69,3 +69,7 @@ func (server *Server) createAuthor(ctx *gin.Context) {
 	}
 	ctx.JSON(http.StatusCreated, author)
 }
+
+func (server *Server) defaultRoute(ctx *gin.Context) {
+	ctx.JSON(http.StatusOK, "Service running")
+}
